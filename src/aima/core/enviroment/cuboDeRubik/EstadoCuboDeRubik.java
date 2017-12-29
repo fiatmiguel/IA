@@ -22,16 +22,14 @@ public class EstadoCuboDeRubik {
 		for(int i = 0;i<3;i++){
 			for(int b=0;b<9;b++)
 				fichas[i][b]=i*3+b;
-		}/*
-		F();
-		B();
-		F();
-		L();
-		D();
-		Uprime();
+		}
+		//movimientoHorizontalCentral();
+		//movimientoVerticalCentral();
+		Lprime();
 		Rprime();
-		movimientoHorizontalCentral();*/
-		B();
+		U();
+		D();
+		D();
 		
 	}
 
@@ -52,7 +50,7 @@ public class EstadoCuboDeRubik {
 		int copia[][]=new int[3][9];
 		for (int i=0;i<3;i++)
 				for (int j=0;j<9;j++)
-					copia[i][j]=fichas[i][j];
+					copia[i][j]=original[i][j];
 		return copia;
 	}
 
@@ -208,7 +206,15 @@ public class EstadoCuboDeRubik {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(fichas);
+		result = prime * result;
+		final int prims[]={	101, 103, 107, 109, 113, 127, 131, 137,
+							139, 149, 151, 157, 163, 167, 173, 179,
+							181, 191, 193, 197, 199, 211, 223, 227,
+							229, 233, 239, 241, 251, 257};
+		for(int i=0;i<3;i++){
+			for(int j=0;j<9;j++)
+				result+=fichas[i][j]*prims[i*3+j];
+		}
 		return result;
 	}
 
@@ -257,7 +263,7 @@ public class EstadoCuboDeRubik {
 	public void movimientoVerticalCentral(){//Este movimiento sirve para calcular
 											//cubos similares, no se usa como
 		int viejo[][]=copia(fichas);		//como movimento para resolver el cubo
-		fichas[0][1]=viejo[2][1];			//y fabricar nuevos
+		fichas[0][1]=viejo[2][1];			//sino fabricar nuevos
 		fichas[0][4]=viejo[1][1];
 		fichas[0][7]=viejo[0][1];
 		fichas[1][1]=viejo[2][4];
