@@ -9,7 +9,7 @@ public class CuboDeRubikGoalTest implements GoalTest {
 		int[][] solucion=new int[3][9];
 		for(int i = 0;i<3;i++){
 			for(int b=0;b<9;b++)
-				solucion[i][b]=i*3+b;
+				solucion[i][b]=i*9+b+1;
 		}
 		EstadoCuboDeRubik estadoFinal = new EstadoCuboDeRubik(solucion);
 		return estadoFinal.equals(estadoActual);

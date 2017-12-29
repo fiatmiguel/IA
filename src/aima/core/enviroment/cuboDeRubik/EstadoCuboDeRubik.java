@@ -21,13 +21,12 @@ public class EstadoCuboDeRubik {
 	public EstadoCuboDeRubik() {
 		for(int i = 0;i<3;i++){
 			for(int b=0;b<9;b++)
-				fichas[i][b]=i*3+b;
+				fichas[i][b]=i*9+b+1;
 		}
-		movimientoHorizontalCentral();
-		movimientoHorizontalCentral();
-		movimientoVerticalCentral();
-		
-		
+		//movimientoHorizontalCentral();//
+		//movimientoHorizontalCentral()
+		//Rprime();
+		movimientoHorizontalCentral();movimientoVerticalCentral();
 	}
 
 	public static Action F = new DynamicAction("F");
@@ -62,6 +61,10 @@ public class EstadoCuboDeRubik {
 		fichas[0][0]=viejo[0][6];
 		fichas[0][3]=viejo[0][7];
 		fichas[0][6]=viejo[0][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("F");
+			System.exit(-1);
+		}
 	}
 	public void Fprime(){
 		int viejo[][]=copia(fichas);
@@ -74,8 +77,33 @@ public class EstadoCuboDeRubik {
 		fichas[0][6]=viejo[0][0];
 		fichas[0][7]=viejo[0][3];
 		fichas[0][8]=viejo[0][6];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("F'");
+			System.exit(-1);
+		}
 	}
-	
+	public boolean comprobarConsistencia(int[][] fichas){
+		boolean[] b=new boolean[27];
+		for (int i=0;i<3;i++){
+			for (int j=0;j<9;j++){
+				if (!b[i*9+j])
+					b[i*9+j]=true;
+				else{
+					String s = "La siguiente matriz está corrompida\n";
+					for (int as=0;as<3;as++){
+						for (int c=0;c<9;c++){
+							s+=fichas[as][c]+" ";
+						}
+						s+="\n";
+					}
+					System.out.println(s);
+					return true;
+				}
+			}
+			
+		}
+		return false;
+	}
 	public void Bprime() {
 		int viejo[][]=copia(fichas);
 		fichas[2][0]=viejo[2][2];
@@ -87,6 +115,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][6]=viejo[2][0];
 		fichas[2][7]=viejo[2][3];
 		fichas[2][8]=viejo[2][6];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("B'");
+			System.exit(-1);
+		}
 	}
 	public void B(){
 		int viejo[][]=copia(fichas);
@@ -99,6 +131,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][0]=viejo[2][6];
 		fichas[2][3]=viejo[2][7];
 		fichas[2][6]=viejo[2][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("B");
+			System.exit(-1);
+		}
 	}
 	public void U(){
 		int viejo[][]=copia(fichas);
@@ -111,6 +147,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][0]=viejo[2][2];
 		fichas[2][1]=viejo[1][2];
 		fichas[2][2]=viejo[0][2];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("U");
+			System.exit(-1);
+		}
 	}
 	public void D(){
 		int viejo[][]=copia(fichas);
@@ -123,6 +163,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][6]=viejo[2][8];
 		fichas[2][7]=viejo[1][8];
 		fichas[2][8]=viejo[0][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("D");
+			System.exit(-1);
+		}
 	}
 	public void L(){
 		int viejo[][]=copia(fichas);
@@ -134,7 +178,10 @@ public class EstadoCuboDeRubik {
 		fichas[1][6]=viejo[0][3];
 		fichas[2][0]=viejo[2][6];
 		fichas[2][3]=viejo[1][6];
-		fichas[2][6]=viejo[0][6];
+		fichas[2][6]=viejo[0][6];if (comprobarConsistencia(fichas)){
+			System.out.println("L");
+			System.exit(-1);
+		}
 	}
 	public void R(){
 		int viejo[][]=copia(fichas);
@@ -146,6 +193,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][2]=viejo[2][8];
 		fichas[2][5]=viejo[1][8];
 		fichas[2][8]=viejo[0][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("R");
+			System.exit(-1);
+		}
 	}
 	public void Lprime(){
 		int viejo[][]=copia(fichas);
@@ -158,6 +209,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][6]=viejo[2][0];
 		fichas[1][6]=viejo[2][3];
 		fichas[0][6]=viejo[2][6];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("L'");
+			System.exit(-1);
+		}
 	}
 	public void Uprime(){
 		int viejo[][]=copia(fichas);
@@ -170,6 +225,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][2]=viejo[2][0];
 		fichas[1][2]=viejo[2][1];
 		fichas[0][2]=viejo[2][2];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("U'");
+			System.exit(-1);
+		}
 	}
 	public void Dprime(){
 		int viejo[][]=copia(fichas);
@@ -182,6 +241,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][8]=viejo[2][6];
 		fichas[1][8]=viejo[2][7];
 		fichas[0][8]=viejo[2][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("D'");
+			System.exit(-1);
+		}
 	}
 	public void Rprime(){
 		int viejo[][]=copia(fichas);
@@ -193,6 +256,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][8]=viejo[2][2];
 		fichas[1][8]=viejo[2][5];
 		fichas[0][8]=viejo[2][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("R'");
+			System.exit(-1);
+		}
 		}
 
 	public int[][] getFichas() {
@@ -210,7 +277,7 @@ public class EstadoCuboDeRubik {
 							229, 233, 239, 241, 251, 257};
 		for(int i=0;i<3;i++){
 			for(int j=0;j<9;j++)
-				result+=fichas[i][j]*prims[i*3+j];
+				result+=fichas[i][j]*prims[i*9+j];
 		}
 		return result;
 	}
@@ -224,40 +291,47 @@ public class EstadoCuboDeRubik {
 		if (getClass() != obj.getClass())
 			return false;
 		EstadoCuboDeRubik other = (EstadoCuboDeRubik) obj;
-		if (!Arrays.deepEquals(fichas, other.getFichas())){
-			U();
-			movimientoHorizontalCentral();
-			D();
-			if (!Arrays.deepEquals(fichas, other.getFichas())){
-				U();
-				movimientoHorizontalCentral();
-				D();
-				if (!Arrays.deepEquals(fichas, other.getFichas())){
-					U();
-					movimientoHorizontalCentral();
-					D();
-					if (!Arrays.deepEquals(fichas, other.getFichas())){
-						U();
-						movimientoHorizontalCentral();
-						D();
-						L();
-						movimientoVerticalCentral();
-						R();
-						if (!Arrays.deepEquals(fichas, other.getFichas())){
-							L();
-							movimientoVerticalCentral();
-							R();
-							L();
-							movimientoVerticalCentral();
-							R();
-							if (!Arrays.deepEquals(fichas, other.getFichas()))
-								return false;
-						}
+		boolean returnValue=false;
+		int[][] seguridad=copia(fichas);
+		for(int j=0;j<4;j++){
+			for (int i=0;i<4;i++){
+				for(int k=0;k<3;k++){
+					for (int h= 0;h<9;h++){
+					if (Arrays.deepEquals(fichas, other.getFichas()))
+						returnValue= true;
 					}
-				}	
+				}
+				rotarZ();
 			}
+			rotarX();
 		}
-		return true;
+		rotarY();
+		for (int i=0;i<4;i++){
+			if (Arrays.deepEquals(fichas, other.getFichas()))
+				returnValue= true;
+			rotarX();
+		}
+		rotarY();
+		rotarY();
+		for (int i=0;i<4;i++){
+			if (Arrays.deepEquals(fichas, other.getFichas()))
+				returnValue= true;
+			rotarZ();
+		}	
+		rotarY();
+		/*
+		if (returnValue){
+			String s = "";
+			for (int as=0;as<3;as++){
+				for (int c=0;c<9;c++){
+					s+=other.getFichas()[as][c]+" ";
+				}
+				s+="\n";
+			}
+			System.out.println(s);
+		}
+		*/
+		return returnValue;
 	}
 
 	public void movimientoVerticalCentral(){//Este movimiento sirve para calcular
@@ -272,6 +346,10 @@ public class EstadoCuboDeRubik {
 		fichas[2][1]=viejo[2][7];
 		fichas[2][4]=viejo[1][7];
 		fichas[2][7]=viejo[0][7];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("Vertical");
+			System.exit(-1);
+		}
 	}
 	
 	public void movimientoHorizontalCentral(){//Idem
@@ -285,6 +363,45 @@ public class EstadoCuboDeRubik {
 		fichas[2][3]=viejo[2][5];
 		fichas[2][4]=viejo[1][5];
 		fichas[2][5]=viejo[0][5];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("Z");
+			System.exit(-1);
+		}
 	}
+	
+	public void movimientoZCentral(){//Idem
+		int viejo[][]=copia(fichas);
+		fichas[1][2]=viejo[1][0];
+		fichas[1][5]=viejo[1][1];
+		fichas[1][8]=viejo[1][2];
+		fichas[1][1]=viejo[1][3];
+			//fichas[0][4]=viejo[0][4]
+		fichas[1][7]=viejo[1][5];
+		fichas[1][0]=viejo[1][6];
+		fichas[1][3]=viejo[1][7];
+		fichas[1][6]=viejo[1][8];
+		if (comprobarConsistencia(fichas)){
+			System.out.println("Z");
+			System.exit(-1);
+		}
+		
+	}
+	
+	private void rotarX(){
+		U();
+		movimientoHorizontalCentral();
+		D();
+	}
+	private void rotarY(){
+		L();
+		movimientoVerticalCentral();
+		R();
+	}
+	private void rotarZ(){
+		F();
+		movimientoZCentral();
+		B();
+	}
+	
 	
 }

@@ -24,5 +24,5 @@ public class CuboDeRubikActionsFunction implements ActionsFunction {
 		acciones.add(EstadoCuboDeRubik.Rprime);
 		return acciones;
 	}
-
+	
 }

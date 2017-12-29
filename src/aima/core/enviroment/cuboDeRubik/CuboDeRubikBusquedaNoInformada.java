@@ -8,14 +8,22 @@ import aima.core.agent.Action;
 import aima.core.search.framework.Problem;
 import aima.core.search.framework.Search;
 import aima.core.search.framework.SearchAgent;
-import aima.core.search.uninformed.BreadthFirstSearch;
 import aima.core.search.uninformed.UniformCostSearch;
 
 public class CuboDeRubikBusquedaNoInformada {
 
 	static EstadoCuboDeRubik estadoInicial=new EstadoCuboDeRubik();
 	public static void main(String[] args) {
-		System.out.println("\nCubo De Rubik BreadFirst--->");
+		costeConstante();
+
+	}
+	private static void printInstrumentation(Properties instrumentation) {
+		System.out.println("Informacion:" + instrumentation.toString());
+		
+	}
+	
+	public static void costeConstante(){
+		System.out.println("\nCubo De Rubik CosteConstante--->");
 		try{
 			Problem problem = new Problem(estadoInicial,
 					CuboDeRubikFunctionFactory.getActionsFunction(), 
@@ -31,11 +39,6 @@ public class CuboDeRubikBusquedaNoInformada {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-
-	}
-	private static void printInstrumentation(Properties instrumentation) {
-		System.out.println("Informacion:" + instrumentation.toString());
-		
 	}
 	
 	private static void printActions(List<Action> actions) {
