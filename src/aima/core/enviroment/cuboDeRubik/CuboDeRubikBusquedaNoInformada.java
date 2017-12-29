@@ -8,6 +8,7 @@ import aima.core.agent.Action;
 import aima.core.search.framework.Problem;
 import aima.core.search.framework.Search;
 import aima.core.search.framework.SearchAgent;
+import aima.core.search.uninformed.BidirectionalSearch;
 import aima.core.search.uninformed.UniformCostSearch;
 
 public class CuboDeRubikBusquedaNoInformada {
@@ -23,8 +24,9 @@ public class CuboDeRubikBusquedaNoInformada {
 	}
 	
 	public static void costeConstante(){
-		System.out.println("\nCubo De Rubik CosteConstante--->");
-		try{
+		
+		try{/*
+			System.out.println("Cubo De Rubik CosteConstante--->");
 			Problem problem = new Problem(estadoInicial,
 					CuboDeRubikFunctionFactory.getActionsFunction(), 
 					CuboDeRubikFunctionFactory.getResultFunction(),
@@ -34,7 +36,19 @@ public class CuboDeRubikBusquedaNoInformada {
 			SearchAgent agent = new SearchAgent(problem, search);
 			printInstrumentation(agent.getInstrumentation());
 			printActions(agent.getActions());
+			*/
+			int[][] solucion=new int[3][9];
+			for(int i = 0;i<3;i++){
+				for(int b=0;b<9;b++)
+					solucion[i][b]=i*9+b+1;
+			}
 			
+			EstadoCuboDeRubik estadoFinal = new EstadoCuboDeRubik(solucion);
+			Problem bi = new BidirectionalCuboDeRubik(estadoInicial,estadoFinal);
+			Search busca=new BidirectionalSearch();
+			SearchAgent ag =new SearchAgent(bi,busca);
+			System.out.println("\nCubo De Rubik Busqueda Bidireccional");
+			printInstrumentation(ag.getInstrumentation());
 			
 		}catch(Exception e){
 			e.printStackTrace();
