@@ -23,13 +23,10 @@ public class EstadoCuboDeRubik {
 			for(int b=0;b<9;b++)
 				fichas[i][b]=i*3+b;
 		}
-		//movimientoHorizontalCentral();
-		//movimientoVerticalCentral();
-		Lprime();
-		Rprime();
-		U();
-		D();
-		D();
+		movimientoHorizontalCentral();
+		movimientoHorizontalCentral();
+		movimientoVerticalCentral();
+		
 		
 	}
 
@@ -240,6 +237,9 @@ public class EstadoCuboDeRubik {
 					movimientoHorizontalCentral();
 					D();
 					if (!Arrays.deepEquals(fichas, other.getFichas())){
+						U();
+						movimientoHorizontalCentral();
+						D();
 						L();
 						movimientoVerticalCentral();
 						R();
