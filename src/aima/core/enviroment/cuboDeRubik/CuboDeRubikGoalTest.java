@@ -11,7 +11,7 @@ public class CuboDeRubikGoalTest implements GoalTest {
 		try{
 			estadoFinal=(EstadoCuboDeRubik)initialState;
 		}catch(Exception E){
-			
+			System.out.println("ERROR ");
 		}
 	}
 	

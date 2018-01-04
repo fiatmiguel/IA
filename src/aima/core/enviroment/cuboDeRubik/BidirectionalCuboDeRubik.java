@@ -11,7 +11,7 @@ public class BidirectionalCuboDeRubik extends Problem implements BidirectionalPr
 	public BidirectionalCuboDeRubik(EstadoCuboDeRubik arg0,EstadoCuboDeRubik solucion){
 		super(arg0, CuboDeRubikFunctionFactory.getActionsFunction(),
 				CuboDeRubikFunctionFactory.getResultFunction(),
-				new DefaultGoalTest(solucion));
+				new CuboDeRubikGoalTest(solucion));
 		
 		reverseProblem = new Problem(new EstadoCuboDeRubik(solucion),
 				CuboDeRubikFunctionFactory.getActionsFunction(), CuboDeRubikFunctionFactory.getResultFunction(),

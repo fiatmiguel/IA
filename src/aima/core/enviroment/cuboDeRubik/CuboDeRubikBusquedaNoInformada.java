@@ -9,12 +9,13 @@ import aima.core.search.framework.Problem;
 import aima.core.search.framework.Search;
 import aima.core.search.framework.SearchAgent;
 import aima.core.search.uninformed.BidirectionalSearch;
+import aima.core.search.uninformed.DepthLimitedSearch;
 import aima.core.search.uninformed.UniformCostSearch;
 
 public class CuboDeRubikBusquedaNoInformada {
 	static EstadoCuboDeRubik estadoInicial=new EstadoCuboDeRubik();
 	public static void main(String[] args) {
-		//biDireccional();
+		biDireccional();
 		costeConstante();
 
 	}
@@ -28,7 +29,7 @@ public class CuboDeRubikBusquedaNoInformada {
 			int[][] solucion=new int[3][9];
 			for(int i = 0;i<3;i++)
 				for(int b=0;b<9;b++)
-					solucion[i][b]=i*9+b+1;	
+					solucion[i][b]=i*9+b+1;
 			EstadoCuboDeRubik estadoFinal = new EstadoCuboDeRubik(solucion);
 			Problem problema = new BidirectionalCuboDeRubik(estadoInicial,estadoFinal);
 			Search tipoBusqueda=new BidirectionalSearch();
@@ -51,6 +52,24 @@ public class CuboDeRubikBusquedaNoInformada {
 					new CuboDeRubikGoalTest(),
 					new CuboDeRubikStepCostFunction());
 			Search search = new UniformCostSearch();
+			SearchAgent agent = new SearchAgent(problem, search);
+			printInstrumentation(agent.getInstrumentation());
+			printActions(agent.getActions());
+		}catch (Exception E){
+			
+		}
+	}
+	
+	public static void profundidad(){
+		
+		try{
+			System.out.println("Cubo De Rubik en profundidad--->");
+			Problem problem = new Problem(estadoInicial,
+					CuboDeRubikFunctionFactory.getActionsFunction(), 
+					CuboDeRubikFunctionFactory.getResultFunction(),
+					new CuboDeRubikGoalTest(),
+					new CuboDeRubikStepCostFunction());
+			Search search = new DepthLimitedSearch(3);
 			SearchAgent agent = new SearchAgent(problem, search);
 			printInstrumentation(agent.getInstrumentation());
 			printActions(agent.getActions());
