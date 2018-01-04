@@ -1,13 +1,13 @@
 package aima.core.enviroment.cuboDeRubik;
 
 import java.util.Arrays;
+import java.util.TreeSet;
 
 import aima.core.agent.Action;
 import aima.core.agent.impl.DynamicAction;
 
 
 public class EstadoCuboDeRubik {
-
 	int[][] fichas=new int[3][9];
 	public EstadoCuboDeRubik(int[][] conf) {
 		fichas=conf;

@@ -12,9 +12,9 @@ import aima.core.search.uninformed.BidirectionalSearch;
 import aima.core.search.uninformed.UniformCostSearch;
 
 public class CuboDeRubikBusquedaNoInformada {
-
 	static EstadoCuboDeRubik estadoInicial=new EstadoCuboDeRubik();
 	public static void main(String[] args) {
+		biDireccional();
 		costeConstante();
 
 	}
@@ -23,9 +23,27 @@ public class CuboDeRubikBusquedaNoInformada {
 		
 	}
 	
+	public static void biDireccional(){
+		try{
+			int[][] solucion=new int[3][9];
+			for(int i = 0;i<3;i++)
+				for(int b=0;b<9;b++)
+					solucion[i][b]=i*9+b+1;	
+			EstadoCuboDeRubik estadoFinal = new EstadoCuboDeRubik(solucion);
+			Problem problema = new BidirectionalCuboDeRubik(estadoInicial,estadoFinal);
+			Search tipoBusqueda=new BidirectionalSearch();
+			SearchAgent ag =new SearchAgent(problema,tipoBusqueda);
+			System.out.println("\nCubo De Rubik Busqueda Bidireccional");
+			printInstrumentation(ag.getInstrumentation());
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public static void costeConstante(){
 		
-		try{/*
+		try{
 			System.out.println("Cubo De Rubik CosteConstante--->");
 			Problem problem = new Problem(estadoInicial,
 					CuboDeRubikFunctionFactory.getActionsFunction(), 
@@ -36,22 +54,8 @@ public class CuboDeRubikBusquedaNoInformada {
 			SearchAgent agent = new SearchAgent(problem, search);
 			printInstrumentation(agent.getInstrumentation());
 			printActions(agent.getActions());
-			*/
-			int[][] solucion=new int[3][9];
-			for(int i = 0;i<3;i++){
-				for(int b=0;b<9;b++)
-					solucion[i][b]=i*9+b+1;
-			}
+		}catch (Exception E){
 			
-			EstadoCuboDeRubik estadoFinal = new EstadoCuboDeRubik(solucion);
-			Problem bi = new BidirectionalCuboDeRubik(estadoInicial,estadoFinal);
-			Search busca=new BidirectionalSearch();
-			SearchAgent ag =new SearchAgent(bi,busca);
-			System.out.println("\nCubo De Rubik Busqueda Bidireccional");
-			printInstrumentation(ag.getInstrumentation());
-			
-		}catch(Exception e){
-			e.printStackTrace();
 		}
 	}
 	
