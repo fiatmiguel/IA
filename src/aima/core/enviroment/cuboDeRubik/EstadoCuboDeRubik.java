@@ -22,12 +22,12 @@ public class EstadoCuboDeRubik {
 		for(int i = 0;i<3;i++){
 			for(int b=0;b<9;b++)
 				fichas[i][b]=i*9+b+1;
-		}movimientoZCentral();//movimientoHorizontalCentral();
+		}movimientoHorizontalCentral();movimientoHorizontalCentral();
 		//movimientoHorizontalCentral();//
 		//movimientoVerticalCentral();
-		/*Rprime();
-		movimientoVerticalCentral();//movimientoVerticalCentral();
-		movimientoZCentral();
+		//Rprime();
+		//movimientoVerticalCentral();movimientoVerticalCentral();
+		//movimientoZCentral();
 		//movimientoZCentral();*/
 	}
 
@@ -94,7 +94,6 @@ public class EstadoCuboDeRubik {
 					return true;
 				}
 			}
-			
 		}
 		return false;
 	}

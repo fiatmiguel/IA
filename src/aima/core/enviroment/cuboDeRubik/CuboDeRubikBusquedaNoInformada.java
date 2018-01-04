@@ -14,7 +14,7 @@ import aima.core.search.uninformed.UniformCostSearch;
 public class CuboDeRubikBusquedaNoInformada {
 	static EstadoCuboDeRubik estadoInicial=new EstadoCuboDeRubik();
 	public static void main(String[] args) {
-		biDireccional();
+		//biDireccional();
 		costeConstante();
 
 	}

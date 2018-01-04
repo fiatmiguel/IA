@@ -19,12 +19,12 @@ public class BusquedaInformada {
 	
 	public static void main(String args[]){
 		CapaBlancaHeuristic heu= new CapaBlancaHeuristic();
-		cuboDeRubikGreedy(heu);
+		cuboDeRubikAStar(heu);
 	}
 	
 	
 	private static void cuboDeRubikAStar(HeuristicFunction heu){
-		System.out.println("\nMisioneros A* with " + heu.toString());
+		System.out.println("\nCubo de Rubik A* with " + heu.toString());
 		try{
 			Problem problem = new Problem(estadoInicial,
 					CuboDeRubikFunctionFactory.getActionsFunction(), 
