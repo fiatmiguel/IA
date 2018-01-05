@@ -1,7 +1,6 @@
 package aima.core.enviroment.cuboDeRubik;
 
 import java.util.Arrays;
-import java.util.TreeSet;
 
 import aima.core.agent.Action;
 import aima.core.agent.impl.DynamicAction;
@@ -27,13 +26,14 @@ public class EstadoCuboDeRubik {
 		//movimientoHorizontalCentral();
 		//movimientoHorizontalCentral();//
 		//movimientoVerticalCentral();
-		Rprime();
+		//Rprime();
 		L();
 		F();
-		U();
+		//U();
 		F();
 		Bprime();
-		//Rprime();
+		L();
+		Rprime();
 		//Rprime();
 		//movimientoVerticalCentral();movimientoVerticalCentral();
 		//movimientoZCentral();

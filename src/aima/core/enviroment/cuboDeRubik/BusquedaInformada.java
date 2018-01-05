@@ -18,8 +18,10 @@ public class BusquedaInformada {
 	public static EstadoCuboDeRubik estadoInicial = new EstadoCuboDeRubik();
 	
 	public static void main(String args[]){
-		CapaBlancaHeuristic heu= new CapaBlancaHeuristic();
-		cuboDeRubikAStar(heu);
+		MarshallHeuristic heu= new MarshallHeuristic();
+		CapaBlancaHeuristic heu2= new CapaBlancaHeuristic();
+		//cuboDeRubikAStar(heu);
+		cuboDeRubikGreedy(heu2);
 	}
 	
 	
