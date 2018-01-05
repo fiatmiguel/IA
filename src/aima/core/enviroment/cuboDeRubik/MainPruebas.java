@@ -2,7 +2,7 @@ package aima.core.enviroment.cuboDeRubik;
 
 import java.util.Arrays;
 
-public class MainMatriz {
+public class MainPruebas {
 	static final int t=9;
 	static int[][] matriz=new int[t][t];
 	static int[][] natriz=new int[t][t];

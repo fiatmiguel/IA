@@ -22,18 +22,20 @@ public class EstadoCuboDeRubik {
 			for(int b=0;b<9;b++)
 				fichas[i][b]=i*9+b+1;
 		}
+//aqui nuevas
+		//B();
+		//abajo no cambiar
+		Lprime();
+		F();
+		Bprime();
+		L();
+		Rprime();
 		//movimientoHorizontalCentral();
 		//movimientoHorizontalCentral();
 		//movimientoHorizontalCentral();//
 		//movimientoVerticalCentral();
 		//Rprime();
-		L();
-		F();
 		//U();
-		F();
-		Bprime();
-		L();
-		Rprime();
 		//Rprime();
 		//movimientoVerticalCentral();movimientoVerticalCentral();
 		//movimientoZCentral();

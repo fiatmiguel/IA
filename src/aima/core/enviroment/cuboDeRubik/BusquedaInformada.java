@@ -20,12 +20,12 @@ public class BusquedaInformada {
 	public static void main(String args[]){
 		MarshallHeuristic heu= new MarshallHeuristic();
 		CapaBlancaHeuristic heu2= new CapaBlancaHeuristic();
-		//cuboDeRubikAStar(heu);
-		cuboDeRubikGreedy(heu2);
+		cuboDeRubikAStar(heu2);
+		//cuboDeRubikGreedy(heu2);
 	}
 	
 	
-	private static void cuboDeRubikAStar(HeuristicFunction heu){
+	public static void cuboDeRubikAStar(HeuristicFunction heu){
 		System.out.println("\nCubo de Rubik A* with " + heu.toString());
 		try{
 			Problem problem = new Problem(estadoInicial,
@@ -43,7 +43,7 @@ public class BusquedaInformada {
 		}
 	}
 	
-	private static void cuboDeRubikGreedy(HeuristicFunction heu){
+	public static void cuboDeRubikGreedy(HeuristicFunction heu){
 		System.out.println("\nCubo de Rubik Voraz with " + heu.toString());
 		try{
 			Problem problem = new Problem(estadoInicial,
